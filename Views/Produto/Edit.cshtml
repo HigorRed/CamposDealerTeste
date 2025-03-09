@@ -1,0 +1,87 @@
+@model Produto
+
+<h2 class="text-center">✏ Editar Produto</h2>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form id="produtoForm" method="post">
+                        <input type="hidden" asp-for="IdProduto" /> 
+
+                        <div class="mb-3">
+                            <label for="DscProduto" class="form-label">Descrição:</label>
+                            <input type="text" id="DscProduto" name="DscProduto" class="form-control" value="@Model.DscProduto" required>
+                            <div class="invalid-feedback">A descrição é obrigatória.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="VlrUnitario" class="form-label">Valor Unitário:</label>
+                            <input type="number" id="VlrUnitario" name="VlrUnitario" class="form-control" min="0.01" step="0.01" value="@Model.VlrUnitario" required>
+                            <div class="invalid-feedback">O valor unitário deve ser maior que 0.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">💾 Salvar Alterações</button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary w-100 mt-2">❌ Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#produtoForm").submit(function (event) {
+            let isValid = true;
+
+           
+            let descricao = $("#DscProduto").val().trim();
+            if (descricao === "") {
+                $("#DscProduto").addClass("is-invalid");
+                isValid = false;
+            } else {
+                $("#DscProduto").removeClass("is-invalid");
+            }
+
+        
+            let valor = parseFloat($("#VlrUnitario").val());
+            if (isNaN(valor) || valor <= 0) {
+                $("#VlrUnitario").addClass("is-invalid");
+                isValid = false;
+            } else {
+                $("#VlrUnitario").removeClass("is-invalid");
+            }
+
+            if (!isValid) {
+                event.preventDefault(); 
+            }
+        });
+    });
+</script>
+
+
+<style>
+    .container {
+        max-width: 600px;
+    }
+
+    .card {
+        border-radius: 8px;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>

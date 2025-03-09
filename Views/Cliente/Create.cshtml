@@ -1,0 +1,84 @@
+@model Cliente
+
+<h2 class="text-center">👤 Adicionar Cliente</h2>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form id="clienteForm" method="post">
+                        <div class="mb-3">
+                            <label for="NmCliente" class="form-label">Nome:</label>
+                            <input type="text" id="NmCliente" name="NmCliente" class="form-control" required>
+                            <div class="invalid-feedback">O nome é obrigatório.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Cidade" class="form-label">Cidade:</label>
+                            <input type="text" id="Cidade" name="Cidade" class="form-control" required>
+                            <div class="invalid-feedback">A cidade é obrigatória.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">💾 Salvar</button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary w-100 mt-2">❌ Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#clienteForm").submit(function (event) {
+            let isValid = true;
+
+       
+            let nome = $("#NmCliente").val().trim();
+            if (nome === "") {
+                $("#NmCliente").addClass("is-invalid");
+                isValid = false;
+            } else {
+                $("#NmCliente").removeClass("is-invalid");
+            }
+
+            let cidade = $("#Cidade").val().trim();
+            if (cidade === "") {
+                $("#Cidade").addClass("is-invalid");
+                isValid = false;
+            } else {
+                $("#Cidade").removeClass("is-invalid");
+            }
+
+            if (!isValid) {
+                event.preventDefault(); 
+            }
+        });
+    });
+</script>
+
+
+<style>
+    .container {
+        max-width: 600px;
+    }
+
+    .card {
+        border-radius: 8px;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>

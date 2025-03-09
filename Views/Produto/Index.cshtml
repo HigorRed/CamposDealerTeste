@@ -1,0 +1,108 @@
+@model List<Produto>
+
+<h2 class="text-center">📦 Lista de Produtos</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">➕ Adicionar Produto</a>
+</p>
+
+
+<div class="mb-3">
+    <input type="text" id="searchInput" class="form-control" placeholder="🔎 Buscar por Produto..." onkeyup="filterTable()">
+</div>
+
+<table class="table table-striped table-bordered" id="productTable">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Valor Unitário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.IdProduto</td>
+                <td class="produto">@produto.DscProduto</td>
+                <td>@String.Format("{0:C}", produto.VlrUnitario)</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = produto.IdProduto })" class="btn btn-warning btn-sm">✏ Editar</a>
+                    <a href="@Url.Action("Delete", new { id = produto.IdProduto })" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este produto?')">🗑 Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    function filterTable() {
+        var input, filter, table, tr, tdProduto, i, txtValueProduto;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("productTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            tdProduto = tr[i].getElementsByClassName("produto")[0];
+
+            if (tdProduto) {
+                txtValueProduto = tdProduto.textContent || tdProduto.innerText;
+                if (txtValueProduto.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .table th, .table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .table-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .btn-primary { background-color: #007bff; color: white; }
+    .btn-warning { background-color: #ffc107; color: black; }
+    .btn-danger { background-color: #dc3545; color: white; }
+    
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    .form-control {
+        width: 50%;
+        margin: 0 auto;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>

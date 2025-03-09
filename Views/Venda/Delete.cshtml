@@ -1,0 +1,50 @@
+@model Venda
+
+<h2 class="text-center text-danger">🗑 Excluir Venda</h2>
+
+<p class="text-center fs-5">
+    Tem certeza que deseja excluir a venda do cliente <strong>@Model.Cliente.NmCliente</strong> para o produto <strong>@Model.Produto.DscProduto</strong>?
+</p>
+
+<div class="d-flex justify-content-center">
+    @using (Html.BeginForm())
+    {
+        <button type="submit" class="btn btn-danger btn-lg mx-2">
+            🗑 Confirmar Exclusão
+        </button>
+    }
+
+    <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg mx-2">
+        ❌ Cancelar
+    </a>
+</div>
+
+
+<style>
+    .btn-lg {
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+</style>
