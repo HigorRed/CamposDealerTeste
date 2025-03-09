@@ -287,3 +287,4 @@ C:\Users\Autolab\CamposDealer\obj\Debug\net8.0\refint\CamposDealer.dll
 C:\Users\Autolab\CamposDealer\obj\Debug\net8.0\CamposDealer.pdb
 C:\Users\Autolab\CamposDealer\obj\Debug\net8.0\CamposDealer.genruntimeconfig.cache
 C:\Users\Autolab\CamposDealer\obj\Debug\net8.0\ref\CamposDealer.dll
+C:\Users\Autolab\CamposDealer\obj\Debug\net8.0\CamposDealer.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CamposDealer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3dc0c18218a9bd9ceb63bf6581b4ff7fd5ac4e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CamposDealer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CamposDealer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
