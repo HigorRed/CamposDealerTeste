@@ -1,0 +1,11 @@
+# Pastas e arquivos desnecessários
+bin/
+obj/
+.vscode/
+.idea/
+*.user
+*.suo
+*.db
+*.log
+appsettings.json
+secrets.json
